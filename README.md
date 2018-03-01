@@ -4,7 +4,7 @@
 
 You will need to have mongo installed and configured. Create a data folder (`mkdir data`) in the repo locally. The `mongod` start up script is shown below.
 
-> `mongod --dbpath=C:/**YOUR_PATH_TO/nodetest2/data`
+> `mongod --dbpath=C:/**YOUR_PATH_TO**/nodetest2/data`
 
 Now you can begin running the application.
 
