@@ -11,3 +11,5 @@ Now you can begin running the application.
 ## Starting the Application
 
 Run `npm install` and then `npm start` when it finishes in your command prompt/terminal. The application will be available at http://localhost:3000/.
+
+_*This is based off of a tutorial.*_
