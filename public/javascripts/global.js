@@ -75,7 +75,6 @@ function showUserInfo(event) {
 
 // Add User
 function addUser(event) {
-  // Prevent default action
   event.preventDefault();
 
   // Super basic validation - increase errorCount variable if any fields are blank
@@ -92,34 +91,34 @@ function addUser(event) {
     var newUser = {
       username: $('#addUser fieldset input#inputUserName').val(),
       email: $('#addUser fieldset input#inputUserEmail').val(),
-      fullname: $('#addUser fieldset input#inputFullName').val(),
-      age: $('#addUser fieldset input#inputAge').val(),
-      location: $('#addUser fieldset input#inputLocation').val(),
-      gender: $('#addUser fieldset input#inputGender').val()
+      fullname: $('#addUser fieldset input#inputUserFullname').val(),
+      age: $('#addUser fieldset input#inputUserAge').val(),
+      location: $('#addUser fieldset input#inputUserLocation').val(),
+      gender: $('#addUser fieldset input#inputUserGender').val()
     };
 
     // Use AJAX to post the object to our adduser service
     $.ajax({
       type: 'POST',
       data: newUser,
-      url: 'users/adduser',
+      url: '/users/adduser',
       dataType: 'JSON'
     }).done(function(response) {
-      // Check for successful response
-      if (response.message === 'Added user successfully') {
+      // Check for successful (blank) response
+      if (response.msg === '') {
         // Clear the form inputs
-        $('#adduser fieldset input').val('');
+        $('#addUser fieldset input').val('');
 
         // Update the table
         populateTable();
       } else {
         // If something goes wrong, alert the error message that our service returned
-        alert('Error: ' + response.message);
+        alert('Error: ' + response.msg);
       }
     });
   } else {
     // If errorCount is more than 0, error out
-    alert('Please fill in all the fields');
+    alert('Please fill in all fields');
     return false;
   }
 }

@@ -14,10 +14,10 @@ router.get('/userlist', function(req, res) {
 router.post('/adduser', function(req, res) {
   var db = req.db;
   var collection = db.get('userlist');
-  collection.insert(req.body, function(err, result) {
-    res.send(
-      err === null ? { message: 'Added user successfully' } : { message: err }
-    );
+  collection.insert(req.body, function(err, result){
+      res.send(
+          (err === null) ? { msg: '' } : { msg: err }
+      );
   });
 });
 
